@@ -28,14 +28,6 @@
 
 
 
-
-
-
-
-
-
-
-
 <div id="preview">
             <h3>Preview blog</h3>
             <p>Blog title: {{ blog.title }}</p>
