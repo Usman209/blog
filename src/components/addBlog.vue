@@ -1,7 +1,7 @@
 <template>
 <div id="add-blog">
     <h2>Add New Blog Post</h2>
-    <form>
+    <form v-if="!submitted">
      <label>Blog Title</label>
     <input type="text" v-model.lazy="blog.title" required>
     <label>Blog Content</label>
@@ -24,7 +24,15 @@
 
 <option v-for="author in authors" :key="author"> {{author}}</option>
 </select>
+
+<button v-on:click.prevent="post1">Add Blog</button>
+<button v-on:click.prevent="post2">axios Add Blog</button>
+
     </form>
+
+    <div v-if="submitted">
+        <h3>Thanks for adding your post</h3>
+    </div>
 
 
 
@@ -48,6 +56,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     
     data(){
@@ -58,12 +68,42 @@ export default {
                 type:[],
                 author:''
             },
-            authors:['AAA','BBB','CCC']
+            authors:['AAA','BBB','CCC'],
+            submitted:false
         }
 
     },
     methods:{
 
+        post1:function(){
+            this.$http.post('https://jsonplaceholder.typicode.com/posts',{
+                title:this.blog.title,
+                content:this.blog.content,
+                userId:1
+            }).then(function(data){
+                console.log(data)
+                this.submitted=true
+            })
+        },
+    post2() {
+    axios.post(`http://jsonplaceholder.typicode.com/posts`, {
+    //   body: this.postBody
+     title:this.blog.title,
+    content:this.blog.content,
+    userId:1
+    })
+    .then(response => {
+        alert("Form was submitted successfully");
+        console.log(response.data)
+        this.submitted=true
+
+        return response
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+
+    },
     }
 }
 </script>
