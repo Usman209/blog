@@ -9,11 +9,26 @@
     <textarea v-model.lazy.trim="blog.content"></textarea>
     
     </form>
+
+<div id="checkboxes">
+<label>Node-Vue</label>
+<input type="checkbox" value="Mevn" v-model="blog.type">
+<label>Node-React</label>
+<input type="checkbox" value="Mern" v-model="blog.type">
+<label>Node-Angular</label>
+<input type="checkbox" value="Mean" v-model="blog.type">
+
+</div>
+
 <div id="preview">
             <h3>Preview blog</h3>
             <p>Blog title: {{ blog.title }}</p>
             <p>Blog content:</p>
             <p style="white-space: pre">{{ blog.content }}</p>
+            <p>Developer Type</p>
+<ul>
+    <li v-for="types in blog.type" :key="types">{{types}}</li>
+</ul>
         </div>
     
 </div>
@@ -30,7 +45,8 @@ export default {
         return{
             blog:{
                 title:'',
-                content:''
+                content:'',
+                type:[]
             }
         }
 
@@ -64,5 +80,12 @@ input[type="text"], textarea{
 }
 h3{
     margin-top: 10px;
+}
+#checkboxes input{
+display: inline-block;;
+margin-right: 10px;
+}
+#checkboxes label{
+    display: inline-block;;
 }
 </style>
