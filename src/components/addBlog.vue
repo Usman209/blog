@@ -5,6 +5,7 @@
      <label>Blog Title</label>
     <input type="text" v-model.lazy="blog.title" required>
     <label>Blog Content</label>
+     <!-- an example of input binding is v-model.lazy.trim . as we add blog we prevernt it not update live . instead on live. it show when whole paragraph complete. -->
     <textarea v-model.lazy.trim="blog.content"></textarea>
     
     </form>
