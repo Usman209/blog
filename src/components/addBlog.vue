@@ -7,10 +7,9 @@
     <label>Blog Content</label>
      <!-- an example of input binding is v-model.lazy.trim . as we add blog we prevernt it not update live . instead on live. it show when whole paragraph complete. -->
     <textarea v-model.lazy.trim="blog.content"></textarea>
-    
-    </form>
 
-<div id="checkboxes">
+
+   <div id="checkboxes">
 <label>Node-Vue</label>
 <input type="checkbox" value="Mevn" v-model="blog.type">
 <label>Node-React</label>
@@ -19,6 +18,23 @@
 <input type="checkbox" value="Mean" v-model="blog.type">
 
 </div>
+<label>Authors:</label>
+
+<select v-model="blog.author">
+
+<option v-for="author in authors" :key="author"> {{author}}</option>
+</select>
+    </form>
+
+
+
+
+
+
+
+
+
+
 
 <div id="preview">
             <h3>Preview blog</h3>
@@ -29,6 +45,7 @@
 <ul>
     <li v-for="types in blog.type" :key="types">{{types}}</li>
 </ul>
+<p>Author:{{blog.author}}</p>
         </div>
     
 </div>
@@ -46,8 +63,10 @@ export default {
             blog:{
                 title:'',
                 content:'',
-                type:[]
-            }
+                type:[],
+                author:''
+            },
+            authors:['AAA','BBB','CCC']
         }
 
     },
