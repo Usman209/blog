@@ -40,6 +40,22 @@ computed:{
             });
 
         }
+},
+filters:{
+    toUppercase(value){
+   return value.toUpperCase()
+},
+snippet(value){
+  return value.slice(0,100) + "...."
+}
+
+},
+directives:{
+    'rainbow':{
+        bind(el, ) {
+   el.style.color = '#'+Math.random().toString().slice(2,8)
+}
+    }
 }
 // created() {
     // axios.get(`http://jsonplaceholder.typicode.com/posts`)
