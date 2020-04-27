@@ -1,9 +1,10 @@
 <template>
     
-    <div id="show-blog">
+    <div v-theme:column="'narrow'" id="show-blog">
 <h1>All blog posts</h1>
 <div v-for="blog in blogs" :key="blog" class="single-blog">
-    <h2>{{blog.title}}</h2>
+    <!-- custom directive -->
+    <h2 v-rainbow>{{blog.title}}</h2>
     <article>{{blog.body}}</article>
 </div>
 </div>
@@ -20,32 +21,27 @@ export default {
     }
     },
     methods:{
-    // created() {
-    // axios.get(`http://jsonplaceholder.typicode.com/posts`)
-    // .then(response => {
-    //   JSON responses are automatically parsed.
-    //   this.posts = response.data
-    //   response.data.body.slice(0,10)
-    // })
-    // .catch(e => {
-    //   this.errors.push(e)
-    // })
 
-    // },
     },
     created(){
     this.$http.get('https://jsonplaceholder.typicode.com/posts').then(function(data){
-        console.log('ok')
-        console.log(data)
-         console.log('ok')
+        // console.log(data)
         this.blogs=data.body.slice(0,10);
     })
 },
+// created() {
+    // axios.get(`http://jsonplaceholder.typicode.com/posts`)
+    // .then(response => {
+    // JSON responses are automatically parsed.
+    // this.posts = response.data
+    //   this.blogs = response.body.slice(0,10)  // slice not working with axios 
+
+
+// }).catch(e => {
+ //console.log(e)
+//})
 
 }
-
-
-
 
 
 </script>
