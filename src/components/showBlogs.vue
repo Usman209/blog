@@ -29,7 +29,6 @@ export default {
         this.blogs = data.body.slice(0, 10);
       });
   },
-  computed: {},
   filters: {
     toUppercase(value) {
       return value.toUpperCase();

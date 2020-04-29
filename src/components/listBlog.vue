@@ -13,12 +13,12 @@
 
 <script>
 // import axios from 'axios'
-import searchMixin from "../mixins/searchMixin";
+import searchMixin from '../mixins/searchMixin';
 export default {
   data() {
     return {
       blogs: [],
-      search: "",
+      search:'',
     };
   },
   methods: {},
