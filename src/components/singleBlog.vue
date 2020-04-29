@@ -26,5 +26,8 @@ this.$http.get("https://jsonplaceholder.typicode.com/posts/" +this.id)
 </script>
 
 <style>
-
+#single-blog{
+    max-width: 960px;
+    margin: 0 auto;
+}
 </style>
